@@ -740,6 +740,69 @@ footer {
 
 /* Media Queries */
 @media (max-width: 768px) {
+    .hero {
+        background-attachment: scroll !important; /* Force scroll on mobile */
+        margin-top: -60px;
+        height: 100vh;
+        min-height: -webkit-fill-available;
+        background-position: center center;
+        background-repeat: no-repeat;
+        position: relative;
+    }
+
+    .hero::before {
+        background: linear-gradient(
+            to bottom,
+            rgba(0, 0, 0, 0.8) 0%,
+            rgba(0, 0, 0, 0.6) 50%,
+            rgba(0, 0, 0, 0.7) 100%
+        );
+    }
+
+    .hero-content {
+        padding: 0 1rem;
+        margin-top: 60px;
+        width: 90%;
+        max-width: 100%;
+        position: relative;
+        z-index: 2;
+    }
+
+    .hero h2 {
+        font-size: 2rem;
+        margin-bottom: 0.8rem;
+        padding: 0 0.5rem;
+        line-height: 1.2;
+    }
+
+    .hero p {
+        font-size: 1.1rem;
+        margin-bottom: 1.5rem;
+        padding: 0 0.5rem;
+        line-height: 1.4;
+    }
+
+    .cta-button {
+        padding: 0.8rem 1.5rem;
+        font-size: 1rem;
+        width: auto;
+        min-width: 200px;
+    }
+
+    /* Adjust kebab animations for mobile */
+    .kebab {
+        display: none; /* Hide animations on mobile for better performance */
+    }
+
+    /* Navigation adjustments */
+    nav {
+        padding: 0 1rem;
+    }
+
+    .logo h1 {
+        font-size: 1.2rem;
+    }
+
     .culinary-journey {
         padding: 3rem 0;
     }
@@ -861,11 +924,6 @@ footer {
         z-index: 1000;
     }
 
-    /* Adjust logo size for mobile */
-    .logo h1 {
-        font-size: 1.2rem;
-    }
-
     .halal-logo {
         height: 30px;
     }
@@ -883,95 +941,22 @@ footer {
         margin: 0 1rem;
         padding: 1.2rem;
     }
+}
 
+/* iPhone specific fixes */
+@supports (-webkit-touch-callout: none) {
     .hero {
-        background-attachment: scroll; /* Fix for iOS */
-        margin-top: -60px; /* Adjust for smaller header */
-        height: 100vh; /* Use viewport height */
-        min-height: -webkit-fill-available; /* Fix for iOS Safari */
+        height: -webkit-fill-available;
+        background-attachment: scroll !important;
     }
-
+    
     .hero-content {
-        padding: 0 1rem;
-        margin-top: 60px;
-        width: 90%;
-    }
-
-    .hero h2 {
-        font-size: 2rem;
-        margin-bottom: 0.8rem;
-        padding: 0 0.5rem;
-    }
-
-    .hero p {
-        font-size: 1.1rem;
-        margin-bottom: 1.5rem;
-        padding: 0 0.5rem;
-    }
-
-    .cta-button {
-        padding: 0.8rem 1.5rem;
-        font-size: 1rem;
-    }
-
-    /* Adjust kebab animations for mobile */
-    .kebab img {
-        width: 30px; /* Smaller kebab images on mobile */
-    }
-
-    /* Ensure kebabs don't overflow on mobile */
-    @keyframes float1 {
-        0% { transform: translateX(-50%) rotate(0deg); }
-        100% { transform: translateX(150%) rotate(360deg); }
-    }
-
-    @keyframes float2 {
-        0% { transform: translateX(-50%) rotate(0deg); }
-        100% { transform: translateX(150%) rotate(360deg); }
-    }
-
-    @keyframes float3 {
-        0% { transform: translateX(-50%) rotate(0deg); }
-        100% { transform: translateX(150%) rotate(360deg); }
-    }
-
-    @keyframes float4 {
-        0% { transform: translateX(-50%) rotate(0deg); }
-        100% { transform: translateX(150%) rotate(360deg); }
-    }
-
-    @keyframes float5 {
-        0% { transform: translateX(-50%) rotate(0deg); }
-        100% { transform: translateX(150%) rotate(360deg); }
-    }
-
-    @keyframes float6 {
-        0% { transform: translateX(-50%) rotate(0deg); }
-        100% { transform: translateX(150%) rotate(360deg); }
-    }
-
-    @keyframes float7 {
-        0% { transform: translateX(-50%) rotate(0deg); }
-        100% { transform: translateX(150%) rotate(360deg); }
-    }
-
-    @keyframes float8 {
-        0% { transform: translateX(-50%) rotate(0deg); }
-        100% { transform: translateX(150%) rotate(360deg); }
-    }
-
-    @keyframes float9 {
-        0% { transform: translateX(-50%) rotate(0deg); }
-        100% { transform: translateX(150%) rotate(360deg); }
-    }
-
-    @keyframes float10 {
-        0% { transform: translateX(-50%) rotate(0deg); }
-        100% { transform: translateX(150%) rotate(360deg); }
+        padding-top: env(safe-area-inset-top);
+        padding-bottom: env(safe-area-inset-bottom);
     }
 }
 
-/* Additional fixes for very small devices */
+/* Very small devices */
 @media (max-width: 380px) {
     .hero h2 {
         font-size: 1.8rem;
@@ -983,12 +968,11 @@ footer {
 
     .hero-content {
         width: 95%;
+        margin-top: 40px;
     }
-}
 
-/* Fix for iOS Safari viewport height issue */
-@supports (-webkit-touch-callout: none) {
-    .hero {
-        height: -webkit-fill-available;
+    .cta-button {
+        min-width: 180px;
+        padding: 0.7rem 1.2rem;
     }
 } 
