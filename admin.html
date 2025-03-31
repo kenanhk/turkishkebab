@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Turkish Kebab Admin - Reservations</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #8B0000;
+            --secondary-color: #8B4513;
+            --accent-color: #FFD700;
+            --text-primary: #333;
+            --text-secondary: #666;
+            --background-light: #fff;
+            --background-dark: #f5f5f5;
+            --success: #28a745;
+            --warning: #ffc107;
+            --danger: #dc3545;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background-color: var(--background-dark);
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: var(--background-light);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 10px;
+        }
+
+        .filters {
+            margin-bottom: 20px;
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .filters select {
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        .reservations-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        .reservations-table th,
+        .reservations-table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .reservations-table th {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .reservations-table tr:nth-child(even) {
+            background-color: var(--background-dark);
+        }
+
+        .status {
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-weight: 500;
+        }
+
+        .status-pending {
+            background-color: var(--warning);
+            color: #000;
+        }
+
+        .status-confirmed {
+            background-color: var(--success);
+            color: white;
+        }
+
+        .status-cancelled {
+            background-color: var(--danger);
+            color: white;
+        }
+
+        .actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        button {
+            padding: 6px 12px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: opacity 0.3s;
+        }
+
+        button:hover {
+            opacity: 0.8;
+        }
+
+        .btn-confirm {
+            background-color: var(--success);
+            color: white;
+        }
+
+        .btn-cancel {
+            background-color: var(--danger);
+            color: white;
+        }
+
+        .no-reservations {
+            text-align: center;
+            padding: 40px;
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Reservation Management</h1>
+        
+        <div class="filters">
+            <select id="statusFilter">
+                <option value="all">All Status</option>
+                <option value="pending">Pending</option>
+                <option value="confirmed">Confirmed</option>
+                <option value="cancelled">Cancelled</option>
+            </select>
+            <select id="dateFilter">
+                <option value="all">All Dates</option>
+                <option value="today">Today</option>
+                <option value="tomorrow">Tomorrow</option>
+                <option value="week">This Week</option>
+            </select>
+        </div>
+
+        <table class="reservations-table">
+            <thead>
+                <tr>
+                    <th>Date & Time</th>
+                    <th>Name</th>
+                    <th>Phone</th>
+                    <th>Guests</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="reservationsBody">
+                <!-- Reservations will be populated here -->
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        // Load and display reservations
+        function loadReservations() {
+            const reservations = JSON.parse(localStorage.getItem('reservations') || '[]');
+            const tbody = document.getElementById('reservationsBody');
+            const statusFilter = document.getElementById('statusFilter').value;
+            const dateFilter = document.getElementById('dateFilter').value;
+
+            // Sort reservations by date
+            reservations.sort((a, b) => new Date(`${a.date}T${a.time}`) - new Date(`${b.date}T${b.time}`));
+
+            // Filter reservations
+            let filteredReservations = reservations;
+            if (statusFilter !== 'all') {
+                filteredReservations = filteredReservations.filter(r => r.status === statusFilter);
+            }
+
+            if (dateFilter !== 'all') {
+                const today = new Date();
+                today.setHours(0, 0, 0, 0);
+                const tomorrow = new Date(today);
+                tomorrow.setDate(tomorrow.getDate() + 1);
+                const weekEnd = new Date(today);
+                weekEnd.setDate(weekEnd.getDate() + 7);
+
+                filteredReservations = filteredReservations.filter(r => {
+                    const reservationDate = new Date(`${r.date}T${r.time}`);
+                    switch(dateFilter) {
+                        case 'today':
+                            return reservationDate >= today && reservationDate < tomorrow;
+                        case 'tomorrow':
+                            return reservationDate >= tomorrow && reservationDate < new Date(tomorrow.getTime() + 86400000);
+                        case 'week':
+                            return reservationDate >= today && reservationDate <= weekEnd;
+                        default:
+                            return true;
+                    }
+                });
+            }
+
+            // Clear existing rows
+            tbody.innerHTML = '';
+
+            if (filteredReservations.length === 0) {
+                tbody.innerHTML = `
+                    <tr>
+                        <td colspan="6" class="no-reservations">No reservations found</td>
+                    </tr>
+                `;
+                return;
+            }
+
+            // Add reservation rows
+            filteredReservations.forEach(reservation => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${reservation.date} ${reservation.time}</td>
+                    <td>${reservation.name}</td>
+                    <td>${reservation.phone}</td>
+                    <td>${reservation.guests}</td>
+                    <td><span class="status status-${reservation.status}">${reservation.status}</span></td>
+                    <td class="actions">
+                        ${reservation.status === 'pending' ? `
+                            <button class="btn-confirm" onclick="updateStatus(${reservation.id}, 'confirmed')">Confirm</button>
+                            <button class="btn-cancel" onclick="updateStatus(${reservation.id}, 'cancelled')">Cancel</button>
+                        ` : ''}
+                    </td>
+                `;
+                tbody.appendChild(row);
+            });
+        }
+
+        // Update reservation status
+        function updateStatus(id, newStatus) {
+            const reservations = JSON.parse(localStorage.getItem('reservations') || '[]');
+            const index = reservations.findIndex(r => r.id === id);
+            
+            if (index !== -1) {
+                reservations[index].status = newStatus;
+                localStorage.setItem('reservations', JSON.stringify(reservations));
+                loadReservations();
+            }
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            loadReservations();
+            
+            // Add filter change listeners
+            document.getElementById('statusFilter').addEventListener('change', loadReservations);
+            document.getElementById('dateFilter').addEventListener('change', loadReservations);
+        });
+    </script>
+</body>
+</html> 

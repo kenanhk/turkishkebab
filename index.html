@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Turkish Kebab - Sai Kung, Hong Kong</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Lora:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <h1>Turkish Kebab - Sai Kung</h1>
+            </div>
+            <div class="nav-right">
+                <button class="hamburger-menu" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#culinary-journey">Our Journey</a></li>
+                <li><a href="#menu">Menu</a></li>
+                <li><a href="#recipes">Recipes</a></li>
+                <li><a href="#reservation">Reservation</a></li>
+                <li class="lang-switch-container">
+                    <button class="lang-switch" onclick="switchLanguage(currentLang === 'en' ? 'zh' : 'en')">中文</button>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="hero" class="hero">
+            <div class="kebab">
+                <img src="assets/kebab_transparent_small.png" alt="Kebab" class="kebab-1">
+                <img src="assets/kebab_transparent_small.png" alt="Kebab" class="kebab-2">
+                <img src="assets/kebab_transparent_small.png" alt="Kebab" class="kebab-3">
+                <img src="assets/kebab_transparent_small.png" alt="Kebab" class="kebab-4">
+                <img src="assets/kebab_transparent_small.png" alt="Kebab" class="kebab-5">
+                <img src="assets/kebab_transparent_small.png" alt="Kebab" class="kebab-6">
+                <img src="assets/kebab_transparent_small.png" alt="Kebab" class="kebab-7">
+                <img src="assets/kebab_transparent_small.png" alt="Kebab" class="kebab-8">
+                <img src="assets/kebab_transparent_small.png" alt="Kebab" class="kebab-9">
+                <img src="assets/kebab_transparent_small.png" alt="Kebab" class="kebab-10">
+            </div>
+            
+            <div class="hero-content">
+                <h2>Authentic Turkish Cuisine by Chef Mustafa Koca</h2>
+                <p>Crafted with 45 Years of Mastery</p>
+                <a href="#reservation" class="cta-button">Reserve a Table</a>
+            </div>
+        </section>
+
+        <section id="culinary-journey" class="culinary-journey">
+            <div class="container">
+                <h1 class="journey-title">Our Culinary Journey</h1>
+                <h2 class="section-title">Our Culinary Journey</h2>
+                <div class="journey-content">
+                    <div class="journey-text fade-in">
+                        <p class="lead">Step into the extraordinary world of Chef Mustafa Koca, where every dish tells a story of passion, tradition, and unparalleled artistry. With a culinary career spanning over 45 years, Mustafa's journey began in 1978 in the vibrant heart of Gaziantep, Turkey—a city renowned as the cradle of Turkish gastronomy. It was here, amid the bustling markets and fragrant kitchens, that a young Mustafa first fell in love with the craft of cooking.</p>
+                        
+                        <p class="fade-in-delay-1">Under the watchful eyes of Gaziantep's most celebrated chefs, Mustafa honed his skills, mastering recipes passed down through generations. These weren't just meals—they were edible masterpieces, infused with the soul of Turkey's rich culinary heritage. From the smoky allure of hand-minced kebabs to the delicate layers of pistachio-laden baklava, he learned the secrets of authenticity: the finest ingredients, the patience of tradition, and the boldness of flavor. Gaziantep became his foundation, its spices and techniques forever etched into his hands.</p>
+                        
+                        <p class="fade-in-delay-2">As his reputation grew, Mustafa's talents took him far beyond Turkey's borders. Over the decades, he has had the honor of serving his creations to world leaders, artists, and famous celebrities—names that echo through history. From intimate dinners for delegations to grand feasts for luminaries, his food has graced tables where decisions were made, stories were told, and cultures collided. Each plate was a testament to his craft, earning him admiration and respect across continents.</p>
+                        
+                        <p class="fade-in-delay-3">Now, in the serene coastal town of Sai Kung, Hong Kong, Chef Mustafa brings his legacy to Turkish Kebab. Here, he continues to weave his magic, using only the purest ingredients imported directly from Gaziantep—no artificial flavors, no shortcuts, just the authentic taste of Turkey, cooked fresh to order. Every bite is a journey through time, a celebration of a life dedicated to the art of gastronomy.</p>
+                        
+                        <p class="journey-closing fade-in-delay-4">At Turkish Kebab, you're not just dining—you're stepping into Mustafa's world, where 45 years of expertise transform simple ingredients into extraordinary experiences. Join us, and taste the legacy of a true culinary maestro.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="menu" class="menu">
+            <div class="container">
+                <h2>Our Culinary Art</h2>
+                <div class="menu-category">
+                    <h3 class="category-title">Kebabs 燒烤</h3>
+                    <div class="menu-items">
+                        <div class="menu-item">
+                            <h3>Black Sea Anchovy Rice</h3>
+                            <p>黑海鯉魚飯</p>
+                        </div>
+                        <div class="menu-item">
+                            <h3>Lamb Shish Kebab</h3>
+                            <p>燒羊肉粒</p>
+                        </div>
+                        <div class="menu-item">
+                            <h3>Chicken Shish Kebab</h3>
+                            <p>燒雞肉粒</p>
+                        </div>
+                        <div class="menu-item">
+                            <h3>Iskender Kebab</h3>
+                            <p>伊斯坎達爾烤肉</p>
+                        </div>
+                        <div class="menu-item">
+                            <h3>Adana Kebab Chicken</h3>
+                            <p>島國燒雞串</p>
+                        </div>
+                        <div class="menu-item">
+                            <h3>Adana Kebab Lamb</h3>
+                            <p>島國燒羊串</p>
+                        </div>
+                        <div class="menu-item">
+                            <h3>Chicken Doner</h3>
+                            <p>轉轉燒雞肉配飯</p>
+                        </div>
+                        <div class="menu-item">
+                            <h3>Lamb Doner</h3>
+                            <p>轉轉燒羊肉配飯</p>
+                        </div>
+                        <div class="menu-item">
+                            <h3>Mix Doner</h3>
+                            <p>轉轉燒雙拼配飯</p>
+                        </div>
+                        <div class="menu-item">
+                            <h3>Beef Steak</h3>
+                            <p>牛排</p>
+                        </div>
+                        <div class="menu-item">
+                            <h3>Fresh Fish</h3>
+                            <p>烤鮮魚</p>
+                        </div>
+                        <div class="menu-item">
+                            <h3>Lamb Chops</h3>
+                            <p>燒羊架</p>
+                        </div>
+                        <div class="menu-item">
+                            <h3>Fish</h3>
+                            <p>煎魚柳飯</p>
+                        </div>
+                        <div class="menu-item">
+                            <h3>Chicken Steak</h3>
+                            <p>雞扒配飯</p>
+                        </div>
+                        <div class="menu-item">
+                            <h3>Shrimp</h3>
+                            <p>煎炒蝦仁</p>
+                        </div>
+                        <div class="menu-item">
+                            <h3>Sac Kebab Lamb</h3>
+                            <p>滷汁羊/雞配飯</p>
+                        </div>
+                        <div class="menu-item">
+                            <h3>Sac Kebab Chicken</h3>
+                            <p>滷汁雞肉配飯</p>
+                        </div>
+                        <div class="menu-item">
+                            <h3>Kofte Lamb</h3>
+                            <p>烤羊肉丸</p>
+                        </div>
+                        <div class="menu-item">
+                            <h3>Kofte Chicken</h3>
+                            <p>烤雞肉丸</p>
+                        </div>
+                        <div class="menu-item">
+                            <h3>Chicken Wings</h3>
+                            <p>燒雞翼飯</p>
+                        </div>
+                        <div class="menu-item">
+                            <h3>Alinazik Kebab</h3>
+                            <p>Choice of chicken or lamb</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-category">
+                    <h3 class="category-title">Rolls 手捻</h3>
+                    <div class="menu-items">
+                        <div class="menu-item">
+                            <h3>Lamb Doner Roll</h3>
+                            <p>轉轉烤羊肉卷</p>
+                        </div>
+                        <div class="menu-item">
+                            <h3>Chicken Doner Roll</h3>
+                            <p>轉轉燒雞卷</p>
+                        </div>
+                        <div class="menu-item">
+                            <h3>Mix Doner Roll</h3>
+                            <p>土耳其雞錦肉卷</p>
+                        </div>
+                        <div class="menu-item">
+                            <h3>Falafel Roll</h3>
+                            <p>膿嘴豆蓉卷</p>
+                        </div>
+                        <div class="menu-item">
+                            <h3>Vegetable Roll</h3>
+                            <p>雞菜卷</p>
+                        </div>
+                        <div class="menu-item">
+                            <h3>Chicken Kofte Roll</h3>
+                            <p>烤雞肉丸卷</p>
+                        </div>
+                        <div class="menu-item">
+                            <h3>Lamb Kofte Roll</h3>
+                            <p>烤串羊肉丸卷</p>
+                        </div>
+                        <div class="menu-item">
+                            <h3>Adana Kebab Roll</h3>
+                            <p>亞丹娜燒羊卷</p>
+                        </div>
+                        <div class="menu-item">
+                            <h3>Lamb Shish Roll</h3>
+                            <p>烤羊粒卷</p>
+                        </div>
+                        <div class="menu-item">
+                            <h3>Chicken Shish Roll</h3>
+                            <p>烤雞粒卷</p>
+                        </div>
+                        <div class="menu-item">
+                            <h3>Fish Roll</h3>
+                            <p>烤魚卷</p>
+                        </div>
+                        <div class="menu-item">
+                            <h3>Halloumi Cheese Roll</h3>
+                            <p>煎雞翅米芝士卷</p>
+                        </div>
+                        <div class="menu-item">
+                            <h3>Beef Doner Roll</h3>
+                            <p>烤牛肉卷</p>
+                        </div>
+                    </div>
+                </div>
+                <p class="menu-note">All dishes are Halal certified and made fresh to order with authentic ingredients.</p>
+            </div>
+        </section>
+
+        <section id="recipes" class="recipes">
+            <div class="container">
+                <h2>A Taste of Turkey</h2>
+                <div class="recipe-content">
+                    <div class="recipe">
+                        <h3>Simple Turkish Flatbread</h3>
+                        <p>Mix flour, water, yeast, and salt. Knead, rest, and bake at 220°C for 15 minutes. Pair with our kebabs for an authentic experience.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="reservation" class="reservation">
+            <div class="container">
+                <h2 class="section-title">Book Your Experience</h2>
+                <form id="reservation-form" class="reservation-form">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" required autocomplete="name" placeholder="Your Name">
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone</label>
+                        <input type="tel" id="phone" name="phone" required autocomplete="tel" placeholder="+852 1234 5678" pattern="\+852\s?\d{4}\s?\d{4}">
+                    </div>
+                    <div class="form-group">
+                        <label for="date">Date</label>
+                        <input type="date" id="date" name="date" required min="2025-03-30">
+                    </div>
+                    <div class="form-group">
+                        <label for="time">Time</label>
+                        <input type="time" id="time" name="time" required min="11:00" max="22:00">
+                    </div>
+                    <div class="form-group">
+                        <label for="guests">Number of Guests</label>
+                        <input type="number" id="guests" name="guests" required min="1" max="10" placeholder="Number of guests">
+                    </div>
+                    <button type="submit" class="submit-button">Submit Reservation</button>
+                </form>
+                <p class="reservation-note">* We'll confirm your booking via phone within 24 hours.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <h3>Turkish Kebab</h3>
+                    <p>Kam Po Court, Shop 15 G/F</p>
+                    <p>Sai Kung Hoi Pong Square, Sai Kung</p>
+                    <p>+852 1234 5678</p>
+                </div>
+                <div class="social-links">
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+            <p class="copyright">&copy; 2024 Turkish Kebab. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://kit.fontawesome.com/your-kit-code.js" crossorigin="anonymous"></script>
+    <script src="languages.js"></script>
+    <script src="script.js"></script>
+</body>
+</html> 
